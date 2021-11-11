@@ -1,0 +1,49 @@
+Question 1 - Please explain Big-O notation in simple terms:
+
+I see big-O notation as a way to describe the complexity of an algorithm or function. 
+The higher the order, the longer the function would take to run. O(1) would be the quickest, O(N) is usually ideal, 
+and then O(N^2) or O(N^3) is what we want to avoid. 
+I always take this into consideration when writing functions and try to avoid nesting loops inside loops as much as possible.
+
+Question 2 - What are the most important things to look for when reviewing another team member's code?:
+
+I would say the most important thing is ensuring that the code runs successfully. 
+After that, I would review the readability of the code. 
+Things like variable and function names, as well as overly complex “one-liners” that may confuse onboarding juniors. 
+Next would be optimization, usually of queries and loops, and then finally, considering corner cases which may need to be addressed.
+
+Question 3 - Describe a recent interaction with someone who was non-technical. What did you need to communicate and how did you do it?:
+
+One of my favourite things is talking directly to the artists to see what kind of support they may need. 
+My last interaction was with an artist who was trying to read documentation to implement their own script.
+
+The example code was:
+Paths = # Some USD func for grabbing paths
+Indexes = [str(Paths.index(path)) for path in Paths if path]
+Indexes = “, “.join(indexes)
+
+I first started by explaining what this code was trying to do, which is to loop through each item in a list of paths, 
+and then determine if that path exists, or is an empty string. If the path exists, it will find the index (where that path lives in the list) 
+and store it in a new list. Finally it creates one long string of all the indexes, separated by a comma, to print.
+
+After they understood, I helped them turn it into a more optimized function:
+
+Indexes = [str(index) for index, path in enumerate(Paths) if path]
+
+This reduced the run time from 22 seconds to 0.01. 
+I explained to the artist that it was because the complexity went from O(N^2) to O(N), 
+since the index() function is basically looping through the entire list again.
+
+Question 4 - Implement a simple priority queue:
+
+Time spent:
+
+Interpreting question - 2 minutes
+Creating function - 30 seconds
+Creating test data - 5 minutes
+Turn function into object - 2 minutes
+Determine corner cases and add asserts - 5 minutes
+Test - 5 minutes
+
+In total this solution took about 20 or 25 minutes to complete.
+(see priority_queue.py)
